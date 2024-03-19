@@ -51,6 +51,45 @@ public class GameManager : MonoBehaviour
         instance = this;
         // Load the totalIncrement value from PlayerPrefs
         totalIncrement = PlayerPrefs.GetInt("TotalIncrement");
+        if(PlayerPrefs.GetInt("MazeWidth") > 0){
+            _mazeWidth = PlayerPrefs.GetInt("MazeWidth");
+        }
+        // Fetch the selected game type from PlayerPrefs
+        SelectedGameType = (GameType)PlayerPrefs.GetInt("SelectedGameType", (int)GameType.Easy);
+
+        // Adjust maze parameters based on the selected game type
+        switch (SelectedGameType)
+        {
+            case GameType.Easy:
+                _mazeDepth = 4;
+                timer.AddTime(30f);
+                break;
+            case GameType.Hard:
+                _mazeDepth = 6;
+                timer.AddTime(60f);
+
+                break;
+            case GameType.VeryHard:
+                _mazeDepth = 8;
+                timer.AddTime(90f);
+
+                break;
+            case GameType.Insane:
+                _mazeDepth = 10;
+                timer.AddTime(120f);
+
+                break;
+            case GameType.Nightmare:
+                _mazeDepth = 15;
+                timer.AddTime(120f);
+
+                break;
+            case GameType.Impossible:
+                _mazeDepth = 50;
+                timer.AddTime(480f);
+
+                break;
+        }
     }
 
     // Method to set the selected game type
@@ -115,7 +154,12 @@ public class GameManager : MonoBehaviour
 
     private void IncrementMazeParams(int incrementAmount)
     {
+        if(PlayerPrefs.GetInt("MazeWidth") > 0){
+        _mazeWidth = PlayerPrefs.GetInt("MazeWidth");
+        }
         _mazeWidth += incrementAmount;
+		PlayerPrefs.SetInt("MazeWidth", _mazeWidth);
+
 
         // // Adjust the maze depth based on the selected game type
         // switch (SelectedGameType)
@@ -203,6 +247,7 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
 	{
+        currentCoins = PlayerPrefs.GetInt("Coins");
 		int moneyGained = 0;
         newCoins = currentCoins;
 		switch (SelectedGameType)
