@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20000
+  m_text: 75000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2892,8 +2892,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCoins: 200
   Chicken2Price: 5000
-  Chicken3Price: 20000
-  Chicken4Price: 100000
+  Chicken3Price: 75000
+  Chicken4Price: 350000
   NoBatteries: {fileID: 706365288}
   BuyChicken2Btn: {fileID: 1187918371}
   BuyChicken3Btn: {fileID: 1335616706}
@@ -4877,7 +4877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100000
+  m_text: 350000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

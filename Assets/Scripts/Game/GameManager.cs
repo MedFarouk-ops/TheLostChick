@@ -316,6 +316,8 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        ControlGameUI.SetActive(false);
+        PlayerAnalogControl.instance.moveSpeed = 0f;
         currentCoins = PlayerPrefs.GetInt("Coins");
         int moneyGained = 0;
 		switch (SelectedGameType)

@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 1640252668857431378}
   - component: {fileID: 1816000565271122806}
   - component: {fileID: 609766090483860586}
+  - component: {fileID: -8501487388082704026}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Player
@@ -306,12 +307,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609766090483860590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4aa2be7bd78442409feaf002546d6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 2.5
   rotationSpeed: 10
   traceMaterial: {fileID: 2100000, guid: 1d209ae10030fc44082394abfc211c2e, type: 2}
 --- !u!95 &609766090483860586
@@ -335,6 +336,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8501487388082704026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609766090483860590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd00015539476294386702a9fc281c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  rotationSpeed: 12
 --- !u!1 &1616061339459926307
 GameObject:
   m_ObjectHideFlags: 0
