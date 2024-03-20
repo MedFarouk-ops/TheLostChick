@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4aa2be7bd78442409feaf002546d6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 8
   rotationSpeed: 15
   traceMaterial: {fileID: 2100000, guid: 1d209ae10030fc44082394abfc211c2e, type: 2}
 --- !u!1 &7834840790707353838

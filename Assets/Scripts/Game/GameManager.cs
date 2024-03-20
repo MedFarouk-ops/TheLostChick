@@ -62,31 +62,31 @@ public class GameManager : MonoBehaviour
         {
             case GameType.Easy:
                 _mazeDepth = 4;
-                timer.AddTime(30f);
+                timer.AddTime(60f);
                 break;
             case GameType.Hard:
                 _mazeDepth = 6;
-                timer.AddTime(60f);
+                timer.AddTime(90f);
 
                 break;
             case GameType.VeryHard:
                 _mazeDepth = 8;
-                timer.AddTime(90f);
+                timer.AddTime(120f);
 
                 break;
             case GameType.Insane:
                 _mazeDepth = 10;
-                timer.AddTime(120f);
+                timer.AddTime(160f);
 
                 break;
             case GameType.Nightmare:
                 _mazeDepth = 15;
-                timer.AddTime(120f);
+                timer.AddTime(1800f);
 
                 break;
             case GameType.Impossible:
                 _mazeDepth = 50;
-                timer.AddTime(480f);
+                timer.AddTime(320f);
 
                 break;
         }
@@ -111,31 +111,31 @@ public class GameManager : MonoBehaviour
         {
             case GameType.Easy:
                 _mazeDepth = 4;
-                timer.AddTime(30f);
+                timer.AddTime(60f);
                 break;
             case GameType.Hard:
                 _mazeDepth = 6;
-                timer.AddTime(60f);
+                timer.AddTime(90f);
 
                 break;
             case GameType.VeryHard:
                 _mazeDepth = 8;
-                timer.AddTime(90f);
+                timer.AddTime(120f);
 
                 break;
             case GameType.Insane:
                 _mazeDepth = 10;
-                timer.AddTime(120f);
+                timer.AddTime(160f);
 
                 break;
             case GameType.Nightmare:
                 _mazeDepth = 15;
-                timer.AddTime(120f);
+                timer.AddTime(1800f);
 
                 break;
             case GameType.Impossible:
                 _mazeDepth = 50;
-                timer.AddTime(480f);
+                timer.AddTime(320f);
 
                 break;
         }
@@ -152,13 +152,23 @@ public class GameManager : MonoBehaviour
 
     // Rest of the GameManager class methods...
 
+    public void IncreaseLevel()
+    {
+        int currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1); // Get the current level from PlayerPrefs
+        currentLevel++; // Increase the level
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel); // Store the updated level in PlayerPrefs
+        PlayerPrefs.Save(); // Save the PlayerPrefs
+    }
+
     private void IncrementMazeParams(int incrementAmount)
     {
+        IncreaseLevel();
         if(PlayerPrefs.GetInt("MazeWidth") > 0){
         _mazeWidth = PlayerPrefs.GetInt("MazeWidth");
         }
         _mazeWidth += incrementAmount;
 		PlayerPrefs.SetInt("MazeWidth", _mazeWidth);
+        PlayerPrefs.Save(); // Save the PlayerPrefs
 
 
         // // Adjust the maze depth based on the selected game type
@@ -247,9 +257,9 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
 	{
+
         currentCoins = PlayerPrefs.GetInt("Coins");
 		int moneyGained = 0;
-        newCoins = currentCoins;
 		switch (SelectedGameType)
 		{
 			case GameType.Easy:
@@ -276,7 +286,7 @@ public class GameManager : MonoBehaviour
 		newCoins = currentCoins + moneyGained;
 		PlayerPrefs.SetInt("Coins", newCoins);
 		// Save the current level progress
-		PlayerPrefs.SetInt("CurrentLevel", currentLevel + 1);
+		// PlayerPrefs.SetInt("CurrentLevel", currentLevel + 1);
 		// Increment totalIncrement and save it
 		totalIncrement += 1;
 		PlayerPrefs.SetInt("TotalIncrement", totalIncrement);
@@ -306,6 +316,7 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        currentCoins = PlayerPrefs.GetInt("Coins");
         int moneyGained = 0;
 		switch (SelectedGameType)
 		{
@@ -329,10 +340,11 @@ public class GameManager : MonoBehaviour
 				break;
 		}
         textWinAmounta = moneyGained;
-        newCoins = currentCoins + moneyGained;
-		PlayerPrefs.SetInt("Coins", newCoins);
+        int anewCoins = currentCoins + moneyGained;
+            PlayerPrefs.SetInt("Coins", anewCoins);
         OnWinLevel?.Invoke();
         completeLevelUI.SetActive(true);
+
     }
 
    
